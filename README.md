@@ -1,7 +1,7 @@
 # Hands_On_LLM_WR
 This repository is create to test code and concepts present in the book Hand On LLM by Jay Alammar, Maarten Grootendorst
 
-Ch - 4: Text Classification
+### Ch-4: Text Classification
 1. Text Classification can be done with representation model or generative models
 2. We perform sentiment analysis on rotten tomatoes movie reviews (Positive/Negative::1/0)
 3. We use frozen representation model for our classification task. The representation model we use are foundation models. A foundation model is fine-tuned for specific tasks; for instance, to perform classification or generate general-purpose embeddings.
@@ -14,3 +14,31 @@ Ch - 4: Text Classification
 8. For generative models, we used
     1. Text-to-Text transformer, we used an open source encoder-decoder Flan-T5 model
     2. ChatGPT for classification. This is decoder only model
+  
+### Ch-5: Text Clustering and Topic Modeling
+#### Text Clustering
+1. In this chapter, we will first explored how to perform clustering with embedding models and then transitioned to a text-clustering-inspired method of topic modeling, namely BERTopic.
+2. We ran clustering and topic modeling on ArXiv articles
+3. We explored a common pipeline for text clustering
+   1. Convert documents to embeddings with embedding model, in this example we used 'thenlper/gte-small' model
+   2. reduce the dimentionality of embeddings with dimentionality reduction model. We can use PCA or UMAP but UMAP tends to handle non-linear relationships better
+   3. Find groups of semantically similar documents with a cluster model. we use HDBSCAN as it does not force a data point to be a part of the cluster and can also find outliers 
+#### Topic Modeling
+1. Classic approaches, like latent Dirichlet allocation, assume that each topic is charac‐ terized by a probability distribution of words in a corpus’s vocabulary.
+2. Topic Modeling is used to find themes or latent topics in a collection of textual data
+3. BERTopic is modular i.e. you can apply different building blocks to different step in topic model to customize your own topic model based on your own needs
+4. The different components for topic modeling using BERTopic are -
+    1. Calculate embeddings for document - 
+    2. Perform dimentionality reduction - UMAP
+    3. Cluster the compressed embeddings - HDBSCAN
+    4. To create topic representation
+       1. Create a class of bag-of-words
+       2. Weigh terms - TF-IDF
+5. Each of the components can be changed
+6. Once the topics have been assigned, -1 is the topic contains all documents that could not be fitted within a topic and are considered outliers.
+7. Representation Model. We can use special techniques/ models to better represent the topics. some techniques are - 
+    1. KeyBERTInspired - KeyBERT extracts keywords from texts by comparing word and document embeddings through cosine similarity.
+    2. Marginal Maximal Relevance (MMR) - We can use maximal marginal relevance (MMR) to diversify our topic representa‐ tions. The algorithm attempts to find a set of keywords that are diverse from one another but still relate to the documents they are compared to.
+    3. Generative Models - We can use generative models to give the representation words and exmaple documents and ask it to output a topic name
+      * Flan T5
+      * ChatGPT 3.5
