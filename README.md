@@ -42,3 +42,12 @@ This repository is create to test code and concepts present in the book Hand On 
     3. Generative Models - We can use generative models to give the representation words and exmaple documents and ask it to output a topic name
       * Flan T5
       * ChatGPT 3.5
+  
+### Ch-6: Prompt Engineering
+1. Through Prompt Engeering we can design prompts in such a way that enhances the quality of output
+2. In this chapter we use an open source model - 'Phi-3 Mini'
+3. Model output can be controlled using parameters-
+    * temperature: Temperature controls the randomness or creativity of the text generated. Higher temperature increases the likelihood that less probable tokens are generated and vice versa.
+    * top_p: Top_p is know as nucleus sampling. It will consider tokens until it reaches cummulative probability
+    * top_k: Top_k parameter control how many token an LLM can consider to generate next token
+4. 
