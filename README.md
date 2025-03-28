@@ -50,4 +50,19 @@ This repository is create to test code and concepts present in the book Hand On 
     * temperature: Temperature controls the randomness or creativity of the text generated. Higher temperature increases the likelihood that less probable tokens are generated and vice versa.
     * top_p: Top_p is know as nucleus sampling. It will consider tokens until it reaches cummulative probability
     * top_k: Top_k parameter control how many token an LLM can consider to generate next token
-4. 
+#### Intro to Prompt Engineering
+4. The main objective of prompt engineering is to elicit a use response from the model. The main ingredients of a good prompt are - instruction and the data it refers to
+5. Some more technique used to improve the quality of LLM output are -
+    * Specificity: accurately describe what you want to achieve
+    * Hallucination: ask LLM to only generate the answer if it knows the answer
+    * Order: Either begin or end your prompt with instruction as LLMs tend to focus more on beginning of the prompt (primacy effect) or end of the prompt (recency effect)
+#### Advance Prompt Engineering
+6. A good prompt contains the some or all of the following components, we can explore building up the context slowly
+    * Persona: Describe what role you want the LLM to take. For e.g. - you are an expert clinician
+    * Instruction: The task itself, you want to be as specific as possible. For e.g. - create a technical document notes based on discuss of an algorithm
+    * Context: It answers the question - "What is the reason for this instruction?" For e.g - you are a data scientist working with clinical experts to come up with a heuristic approach to solve a domain problem
+    * Format: The format of the output that the LLM should generate. For e.g. - create a one-pager technical document
+    * Audience: The target of the generated text. For e.g. - Create a document which will be read by clinical experts and technical leadership
+    * Tone: Tone of the text to be generated. For e.g. - technical document language should be formal
+    * Data: Data for the task. For e.g. - provide the details of technical document, these could be free-hand meeting notes or brainstorming session notes
+7. 
