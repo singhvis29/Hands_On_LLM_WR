@@ -65,4 +65,13 @@ This repository is create to test code and concepts present in the book Hand On 
     * Audience: The target of the generated text. For e.g. - Create a document which will be read by clinical experts and technical leadership
     * Tone: Tone of the text to be generated. For e.g. - technical document language should be formal
     * Data: Data for the task. For e.g. - provide the details of technical document, these could be free-hand meeting notes or brainstorming session notes
-7. 
+7. In context learning: We can provide LLM with examples of exactly the things that we want to achieve. Its called Zero-shot, One-shot, Few-shot learning based on how many examples.
+8. Chain Prompting: Instead of giving all the information at once, we can break them down between prompts, this technique allows LLM to spend more time on one question instead of tackling whole problem at once.
+9. Chain of thought: It aims to have the generative model think first rather than answering the question directly without any reason (Sytem 2 thinking). We can use this by asking the model to provide the reasoning behind the answer. E.g.- Add the prompt 'Let's think step-by-step'
+10. Self-Consistency: This method asks the generative model the same prompt multiple times and takes the majority result as the final answer. It require the same question to be asked multiple times
+11. Tree of thought: Exploring Intermediate Steps: By leveraging a tree-based structure, generative models can generate inter‐ mediate thoughts to be rated. The most promising thoughts are kept and the lowest are pruned.
+12. Output Verification: Reasons for validating output might include - getting a structured output, generate a valid output (e.g. - classification), ethics, accuracy. There are 3 ways of controlling output of LLM - examples, grammar, and fine-tuning.
+13. llama-cpp-python is a library like transformers which expect compressed (quantized) model (GGUF format)
+
+### Ch-7: Advanced Text Generation Techniques and Tools
+1. 
