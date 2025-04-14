@@ -1,6 +1,36 @@
 # Hands_On_LLM_WR
 This repository is create to test code and concepts present in the book Hand On LLM by Jay Alammar, Maarten Grootendorst
 
+### Ch-1: An Introduction to Large Language Models
+
+1. In this book, **we learn how large language models (LLMs) have revolutionized the field of Language AI**, significantly altering our methods for tasks like translation, classification, and summarization. This trend, driven by rapid advancements in deep learning, has enabled language AI systems to achieve unprecedented levels of text understanding and generation.
+2. **We begin by establishing that Language AI** is a field within artificial intelligence focused on enabling computer systems to perform tasks that closely resemble human intellectual capabilities, such as speech recognition and language translation.
+3. **We trace the history of Language AI**, noting its progression from earlier models aimed at structured language representation for computers, commencing with techniques like **bag-of-words**.
+4. **We explain that the bag-of-words technique** involves tokenizing text into individual words or subwords and subsequently creating numerical representations (vectors) by counting the occurrences of these tokens. We categorize these as **representation models**.
+5. **We then introduce embeddings** as a more advanced form of numeric representation for words, where the goal is to capture semantic similarity. These embeddings allow us to measure how conceptually close the meanings of different words are using distance metrics.
+6. **We describe the attention mechanism** as a significant step towards enabling models to encode context within sequences. This allows a model to focus on the relevant parts of an input and amplify their signal, selectively determining the importance of words within a sentence. We further elaborate on **self-attention**, a key component in Transformer models, which allows simultaneous attention to different positions within a single sequence.
+7. **We highlight two main categories of LLMs discussed in this book:** representation models (encoder-only) like **BERT**, which utilize **masked language modeling** during training, and generative models (decoder-only) like the **GPT family**. Both of these categories leverage the power of the attention mechanism.
+8. **We emphasize that LLMs have numerous common use cases and applications**, and within this book, we will explore their practical application in areas such as copywriting and summarization, the creation of semantic search systems, and their utility for text classification, search, and clustering.
+9. **We state that this chapter provides an overview** of the broader landscape of Language AI, encompassing its diverse applications, the important societal and ethical implications that arise from its use, and a consideration of the resources typically required to operate these models.
+10. **We conclude this introductory chapter** by demonstrating the generation of our first text using **Phi-3-mini**, a relatively small yet performant generative model that we will utilize in practical examples throughout the remainder of the book.
+
+### Ch-2: Tokens and Embeddings
+
+1. In Chapter 2, **the book delves into the core concepts of tokens and embeddings**, which are fundamental for understanding large language models (LLMs).
+2. **We begin by exploring what tokens are and the different tokenization methods** that LLMs utilize. The book highlights that current interactions with language models primarily involve generating text one token at a time.
+3. **The book illustrates how tokenizers break down text into words or parts of words** based on specific methods and training procedures.
+4. **The book points out that three main factors dictate how a tokenizer processes an input prompt**: the **tokenization method** (like BPE or WordPiece), **tokenizer design choices** (vocabulary size, special tokens), and the **training dataset**.
+5. **The book discusses various tokenization schemes**, including **subword tokens** (the most common), **word tokens**, **character tokens**, and **byte tokens**, outlining their differences and capabilities in handling new or rare words.  
+6. **It showcases how different trained LLM tokenizers**—such as BERT, GPT-2, GPT-4, StarCoder2, FLAN-T5, Galactica, Phi-3, and Llama 2—process the same input text, emphasizing their unique behaviors and the use of **special tokens** like `[CLS]`, `[SEP]`, and `<|endoftext|>`.  
+7. **The book clarifies that embeddings are numeric representations used to capture meaning and patterns in language**. LLMs operate on raw, static embeddings as inputs and generate **contextual text embeddings** as outputs.  
+8. **It dives into the influential word2vec embedding method**, a foundational approach that preceded modern LLMs, explaining how it learns word relationships and encodes them as vectors.  
+9. **The book emphasizes the usefulness of embeddings for measuring semantic similarity**, often leveraging distance metrics to compare meanings between words.  
+10. **It also covers various types of embeddings**, including **word embeddings** and **sentence/text embeddings**, which reflect different abstraction levels and power diverse applications.  
+11. **The book explains the word2vec algorithm’s training process**, which involves predicting surrounding words (or neighbors) and using negative sampling to refine the embeddings.  
+12. **It reiterates that modern language models generate high-quality, contextualized token embeddings**, which are essential for downstream tasks like named-entity recognition, summarization, and classification.  
+13. **The book concludes by reinforcing that tokenizer algorithms, tokenization parameters, and training datasets are core design decisions** that shape how tokenization behaves.  
+
+
 ### Ch-4: Text Classification
 1. Text Classification can be done with representation model or generative models
 2. We perform sentiment analysis on rotten tomatoes movie reviews (Positive/Negative::1/0)
