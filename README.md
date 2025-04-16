@@ -43,7 +43,18 @@ This repository is create to test code and concepts present in the book Hand On 
 7. Two main steps are involved in the attention mechanism:
     i. A way to score how relevant each of the previous input tokens are to the current token being processed (in the pink arrow).
     ii. Using those scores, we combine the information from the various positions into a single output vector.
-8. To give the Transformer more extensive attention capability, the attention mechanism is duplicated and executed multiple times in parallel. 
+8. To give the Transformer more extensive attention capability, the attention mechanism is duplicated and executed multiple times in parallel.
+9. While calculating attention, the goal is to produce a new representation of the current position that incorporates relevant information from the previous tokens
+10. The training process produces 3 projection matrices - **query projection matrix**, **key projection matrix**, and **value projection matrix**.
+11. The two steps of attention are -
+   i. Relevance Scoring - In this step, the query vector of the current position is multiplied by keys matrix. This produces a score stating how relevant each of the previous token is. These scores are then normalized by passing through a softmax function
+   ii. Combining Information - In this step we multiple the value vector associated with each token by that token's score. Summing up those vectors produces results of this step
+12. Recent improvement to transformers architecture include -
+   * Local/Sparse attention which limits the context of previous tokens that the model can attend to
+   * Multi-query and grouped-query attention presents a more efficient attention mechanism by sharing the keys and values matrices across multiple/all the attention heads.
+   * Flash attention - a method to speed up training and inference by speeding up the attention calculation by optimizing what values are loaded and moved between a GPU’s shared memory (SRAM) and high bandwidth memory (HBM).
+   * Other improvment to architectures include using residual connection, improvements in normalization (RMSNorm), and activation functions (e.g. - SwiGLU)
+   * Improvment to positional embeddings include packing, rotary embeddings.
 
 
 
