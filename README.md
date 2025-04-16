@@ -28,7 +28,23 @@ This repository is create to test code and concepts present in the book Hand On 
 10. **It also covers various types of embeddings**, including **word embeddings** and **sentence/text embeddings**, which reflect different abstraction levels and power diverse applications.  
 11. **The book explains the word2vec algorithm’s training process**, which involves predicting surrounding words (or neighbors) and using negative sampling to refine the embeddings.  
 12. **It reiterates that modern language models generate high-quality, contextualized token embeddings**, which are essential for downstream tasks like named-entity recognition, summarization, and classification.  
-13. **The book concludes by reinforcing that tokenizer algorithms, tokenization parameters, and training datasets are core design decisions** that shape how tokenization behaves.  
+13. **The book concludes by reinforcing that tokenizer algorithms, tokenization parameters, and training datasets are core design decisions** that shape how tokenization behaves.
+
+### Ch-3: Looking inside Large Language Model
+
+1. In this chapter we learn the inner workings of a transformer-based LLM. We look at some of the main intuitions of how transformer models work.
+2. For a text generation model, the model does not generate the text all in one operation, it actually generates one token at a time. Each token generation step is one forward pass through the model. After each token generation, we tweak the input prompt for the next generation step by appending the output token at the end of the input prompt. These kind models which consume their earlier prediction to generate later predictions are called auto-regressive models
+3. Forward Pass - Components of forward pass include tokenizer, transformer blocks, and language modeling head (LM head). The tokenizer is followed by the neural network: a stack of Transformer blocks that do all of the processing. That stack is then followed by the LM head, which translates the output of the stack into probability scores for what the most likely next token is.
+4. The method of choosing a sin‐ gle token from the probability distribution is called the decoding strategy. The idea here is to basically sample from the probability distribution based on the probability score. Choosing the highest scoring token every time is called greedy decoding. It’s what happens if you set the temperature parameter to zero in an LLM.
+5. For text generation, only the output result of the last stream is used to predict the next token. When generating a token, we simply append the output of previous pass and do another forward pass. In a transformer model, we do not need to repeat calculations of the previous streams. This optimizations technique technique called the keys and values (kv) cache and it provides a significant speedup of the generation process. Keys and values are some of the central components of the attention mechanism.
+6. A Transformer block is made up of two successive components:
+    * The attention layer is mainly concerned with incorporating relevant information from other input tokens and positions
+    * The feedforward layer houses the majority of the model’s processing capacity
+7. Two main steps are involved in the attention mechanism:
+    i. A way to score how relevant each of the previous input tokens are to the current token being processed (in the pink arrow).
+    ii. Using those scores, we combine the information from the various positions into a single output vector.
+8. To give the Transformer more extensive attention capability, the attention mechanism is duplicated and executed multiple times in parallel. 
+
 
 
 ### Ch-4: Text Classification
