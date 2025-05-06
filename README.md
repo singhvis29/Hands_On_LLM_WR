@@ -131,4 +131,10 @@ This repository is create to test code and concepts present in the book Hand On 
 13. llama-cpp-python is a library like transformers which expect compressed (quantized) model (GGUF format)
 
 ### Ch-7: Advanced Text Generation Techniques and Tools
-1. 
+1. In this chapter, we explore methods and concepts for improving the quality of generated text - Model I/O, Memory, Agents, Chains. These methods are all integrated within Langchain framework.
+2. In this chapter we use a GGUF model, a GGUF model represents a compressed version of its original counterpart through a method called quantization, which reduces the number of bits needed to represent the parameters of an LLM. Quantization is a similar process that reduces the precision of a value (e.g., removing seconds) without removing vital information
+3. Instead of copy-pasting this template each time we use the LLM in LangChain, we can use one of LangChain’s core functionalities, namely “chains.”  With LangChain, we will use chains to create and use a default prompt template.
+4. We create a template for prompt which is expected by the LLM, using this template, the model takes in a system_prompt, which generally describes what we expect from the LLM. Adding a prompt template to the chain is just the very first step you need to enhance the capabilities of your LLM.
+5. With **sequential chains**, the output of a prompt is used as the input for the next prompt.
+6. In this chapter, we generate a story by providing a summary. We generate the title, charater description as intermediate steps and chain all the steps together
+7. 
