@@ -144,3 +144,15 @@ This repository is create to test code and concepts present in the book Hand On 
 9. Although the tools they use are important, the driving force of many agent-based systems is the use of a framework called Reasoning and Acting (ReAct). ReAct merges these two concepts and allows reasoning to affect acting and actions to affect reasoning. In practice, the framework consists of iteratively following these three steps: thought, action, observation.
 10. The LLM is asked to create a “thought” about the input prompt. This is similar to asking the LLM what it thinks it should do next and why. Then, based on the thought, an “action” is triggered. The action is generally an external tool, like a calculator or a search engine. Finally, after the results of the “action” are returned to the LLM it “observes” the output, which is often a summary of whatever result it retrieved.
 11. We see an example where the LLM uses DuckDuckGo's search tool to run a query online and calculator tool to perform mathematical operation before outputting a results.
+
+
+### Ch-8: Semantic Search and Retrieval-Augmented Generation (RAG)
+1. Semantic search enables searching by meaning of text, not just keyword search. RAG systems are one of the most popular way to reduce hallucinations, we provide the LLM the block of text which it should use to generate text.
+2. The way to use language models for search are -
+   *   Dense Retreival: retreives the nearest neighbour after converting query and text to embeddings
+   *   Reranking: Uses a reranking model to rank the items obtained using dense retreival based on user-defined criteria
+   *   RAG: retrieves the text which is most similar to the query and augments the LLM with the information in order to provide it better context
+3. Dense Retreival
+   i.   We chunk the document before proceeding to embed each chunk, these chunks are stores in vector database and are ready for retreival
+5. 
+6. 
