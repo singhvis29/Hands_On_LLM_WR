@@ -149,10 +149,9 @@ This repository is create to test code and concepts present in the book Hand On 
 ### Ch-8: Semantic Search and Retrieval-Augmented Generation (RAG)
 1. Semantic search enables searching by meaning of text, not just keyword search. RAG systems are one of the most popular way to reduce hallucinations, we provide the LLM the block of text which it should use to generate text.
 2. The way to use language models for search are -
-   *   Dense Retreival: retreives the nearest neighbour after converting query and text to embeddings
-   *   Reranking: Uses a reranking model to rank the items obtained using dense retreival based on user-defined criteria
-   *   RAG: retrieves the text which is most similar to the query and augments the LLM with the information in order to provide it better context
-3. Dense Retreival
-   i.   We chunk the document before proceeding to embed each chunk, these chunks are stores in vector database and are ready for retreival
+   * Dense Retreival: retreives the nearest neighbour after converting query and text to embeddings
+   * Reranking: Uses a reranking model to rank the items obtained using dense retreival based on user-defined criteria
+   * RAG: retrieves the text which is most similar to the query and augments the LLM with the information in order to provide it better context
+3. Dense Retreival - We chunk the document before proceeding to embed each chunk, these chunks are stores in vector database and are ready for retreival
+4. We build an example for dense retreival using Cohere to search the Wikipedia page for the film Interstellar. In this example, we build a search index using `faiss` library on the embeddings.
 5. 
-6. 
