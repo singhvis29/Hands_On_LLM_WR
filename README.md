@@ -153,5 +153,9 @@ This repository is create to test code and concepts present in the book Hand On 
    * Reranking: Uses a reranking model to rank the items obtained using dense retreival based on user-defined criteria
    * RAG: retrieves the text which is most similar to the query and augments the LLM with the information in order to provide it better context
 3. Dense Retreival - We chunk the document before proceeding to embed each chunk, these chunks are stores in vector database and are ready for retreival
-4. We build an example for dense retreival using Cohere to search the Wikipedia page for the film Interstellar. In this example, we build a search index using `faiss` library on the embeddings.
-5. 
+4. We build an example for dense retreival using Cohere to search the Wikipedia page for the film Interstellar. In this example, we build a search index using `chromadb` library on the embeddings. We also look at keyword search using the `BM250kapi` library
+5. Caveats of using a dense search include -
+   * If the text dont contain the the answer, dense retreival still gets results and distances.
+   * Exact matches are are hard to find, that is a case for keyword search.
+   * Dense retreival systems find it challenging to work properly in domains other than the ones they have been trained on.
+   * Determining best way to chunk documents
