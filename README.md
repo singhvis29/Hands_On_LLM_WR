@@ -159,3 +159,11 @@ This repository is create to test code and concepts present in the book Hand On 
    * Exact matches are are hard to find, that is a case for keyword search.
    * Dense retreival systems find it challenging to work properly in domains other than the ones they have been trained on.
    * Determining best way to chunk documents
+6. Transformer language models are limited in context size so intelligent chunking strategies should be applied in order to retreive most relevent documents. Generally multiple vectors per document perform better than one vector per document strategies due to their ability to capture more information
+7. To make the search scale beyond millions of vectors, we use nearest neighbour optimized search libraries like FAISS or Annoy. Vector databases like Pinecone, ChromaDB, Weaviate can also be used for building retrieval systems
+8. Fine-tuning a model based on the data include making the relevant queries closer to the document and making irrelevant queries farther from the document
+9. Rerankers operate as a part of a search pipeline with a goal to reorder a number of shortlisted search results by relevance. The shortlisting step is called the first-stage and can be a dense retrieval, keyword search or hybrid approach
+10. A reranker assigns a relevance score to each document by looking at the document and the query at the same time. One popular way to build LLM search reranker is to present the query and each results to an LLM working as a cross-encoder
+11. MAP (Mean Average Precision) and nDCG (normalized discounted cummulative gain) are two metrics to evaluate search systems. In this book, we learn how to calculate MAP for a search system.
+12. The mean average precision takes into consideration the average precision score of a system for every query in the test suite. By averaging them, it produces a single metric that we can use to compare a search system against another.
+13. 
