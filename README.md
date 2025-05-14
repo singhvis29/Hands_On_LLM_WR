@@ -166,4 +166,8 @@ This repository is create to test code and concepts present in the book Hand On 
 10. A reranker assigns a relevance score to each document by looking at the document and the query at the same time. One popular way to build LLM search reranker is to present the query and each results to an LLM working as a cross-encoder
 11. MAP (Mean Average Precision) and nDCG (normalized discounted cummulative gain) are two metrics to evaluate search systems. In this book, we learn how to calculate MAP for a search system.
 12. The mean average precision takes into consideration the average precision score of a system for every query in the test suite. By averaging them, it produces a single metric that we can use to compare a search system against another.
-13. 
+13.  A basic RAG pipeline is made up of a search step followed by a grounded generation step where the LLM is prompted with the question and the information retrieved from the search step.
+14.  We turn a search system to RAG system by adding a generation step at the end an LLM of the search pipeline. The generation step is called grounded generation
+15.  RAG systems also help the users by citing its sources
+16.  In this book we build example of RAG system using LLM API and local model
+17.  A prompt template plays a vital part in the RAG pipeline. It is the central place where we communicate the relevant documents to the LLM. 
