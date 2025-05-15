@@ -170,4 +170,12 @@ This repository is create to test code and concepts present in the book Hand On 
 14.  We turn a search system to RAG system by adding a generation step at the end an LLM of the search pipeline. The generation step is called grounded generation
 15.  RAG systems also help the users by citing its sources
 16.  In this book we build example of RAG system using LLM API and local model
-17.  A prompt template plays a vital part in the RAG pipeline. It is the central place where we communicate the relevant documents to the LLM. 
+17.  A prompt template plays a vital part in the RAG pipeline. It is the central place where we communicate the relevant documents to the LLM.
+18.  There are several techniques to improve performance of a RAG system
+   *   Query Rewriting: Precise query writing
+   *   Multi-query RAG: multiple queries to get the answer
+   *   Multi-hop query: series of sequential queries
+   *   Query rerouting: using multiple sources
+   *   Agentic RAG
+19. RAGs are evaluated on the basis of - fluency, perceived utility, citation recall, citation precision.
+20. We can use LLM-as-a-judge and score the LLM across various criterion. `Ragas` is a software that does this.
