@@ -179,3 +179,9 @@ This repository is create to test code and concepts present in the book Hand On 
    *   Agentic RAG
 19. RAGs are evaluated on the basis of - fluency, perceived utility, citation recall, citation precision.
 20. We can use LLM-as-a-judge and score the LLM across various criterion. `Ragas` is a software that does this.
+
+### Ch-8: Multimodal Large Language Models
+
+1. Both the original Transformer as well as the Vision Transformer take unstructured data, convert it to numerical representations, and finally use that for tasks like classification.
+2. ViT involves a method for tokenizing images into “words,” which allowed them to use the original encoder structure. It converts the original image into patches of images.
+3. 
