@@ -184,4 +184,7 @@ This repository is create to test code and concepts present in the book Hand On 
 
 1. Both the original Transformer as well as the Vision Transformer take unstructured data, convert it to numerical representations, and finally use that for tasks like classification.
 2. ViT involves a method for tokenizing images into “words,” which allowed them to use the original encoder structure. It converts the original image into patches of images.
-3. 
+3. ViT converts the orignial image into patches of images, these patches are linearly embedded to create numerical representations, namely embeddings. These can be used as input to transformer model. The moment the embeddings are passed to the encoder, they are treated as if they were textual tokens.
+4. Multimodel embedding models create the embeddings for multiple modalities in the same vector space. The pair of embeddings are compared using cosine similarity.
+5. When we start training, the similarity between the image embedding and text embed‐ ding will be low as they are not yet optimized to be within the same vector space. During training, we optimize for the similarity between the embeddings and want to maximize them for similar image/caption pairs and minimize them for dissimilar image/caption pairs. This method is called contrastive learning. Eventually, we expect the embedding of an image of a cat would be similar to the embedding of the phrase “a picture of a cat.”
+6. 
