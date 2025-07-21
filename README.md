@@ -188,6 +188,12 @@ This repository is create to test code and concepts present in the book Hand On 
 4. Multimodel embedding models create the embeddings for multiple modalities in the same vector space. The pair of embeddings are compared using cosine similarity.
 5. When we start training, the similarity between the image embedding and text embed‐ ding will be low as they are not yet optimized to be within the same vector space. During training, we optimize for the similarity between the embeddings and want to maximize them for similar image/caption pairs and minimize them for dissimilar image/caption pairs. This method is called contrastive learning. Eventually, we expect the embedding of an image of a cat would be similar to the embedding of the phrase “a picture of a cat”. Negative examples of images and captions should also be included in the training.
 6. BLIP-2 is a modular technique which allows for introducing vision capabilities to existing language models. Instead of building the architecture from scratch, BLIP-2 bridges the vision-language gap by building a bridge, named the Querying Transformer (Q-Former), that con‐ nects a pretrained image encoder and a pretrained LLM. The Querying Transformer is the bridge between vision (ViT) and text (LLM) that is the only trainable component of the pipeline.
-7. 
-8. 
-9. 
+7. To connect the two pretrained models, Q-Former mimics their architecture, it has 2 modules - An image transformer to interact with Vision Transformer for feature extraction and text transformer that can interact with the LLM
+8. In step 1, image-document pairs are used to train the Q-Former to represent both images and text. 
+9. The images are fed to the frozen ViT to extract vision embeddings. These embeddings are used as the input of Q-Former’s ViT. The captions are used as the input of Q-Former’s Text Transformer. With these inputs, the Q-Former is then trained on three tasks:
+   * Image-text contrastive learning - This task attempts to align pairs of image and text embeddings such that they maximize their mutual information.
+   * Image-text matching - A classification task to predict whether an image and text pair is positive (matched) or negative (unmatched).
+   * Image-grounded text generation - Trains the model to generate text based on information extracted from the input image.
+These three objectives are jointly optimized to improve the visual representations that are extracted from the frozen ViT. I
+10. In step 2, the learnable embeddings derived from step 1 now contain visual informa‐ tion in the same dimensional space as the corresponding textual information. There is also a fully connected linear layer in between them to make sure that the learnable embeddings have the same shape as the LLM expects.
+11. We looks at how the BLIP model preprocesses text and image and then look at two usecases - Image captioning and Multi-modelchat based prompting.
