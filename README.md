@@ -180,7 +180,7 @@ This repository is create to test code and concepts present in the book Hand On 
 19. RAGs are evaluated on the basis of - fluency, perceived utility, citation recall, citation precision.
 20. We can use LLM-as-a-judge and score the LLM across various criterion. `Ragas` is a software that does this.
 
-### Ch-8: Multimodal Large Language Models
+### Ch-9: Multimodal Large Language Models
 
 1. Both the original Transformer as well as the Vision Transformer take unstructured data, convert it to numerical representations, and finally use that for tasks like classification.
 2. ViT involves a method for tokenizing images into “words,” which allowed them to use the original encoder structure. It converts the original image into patches of images.
@@ -197,3 +197,9 @@ This repository is create to test code and concepts present in the book Hand On 
 These three objectives are jointly optimized to improve the visual representations that are extracted from the frozen ViT. I
 10. In step 2, the learnable embeddings derived from step 1 now contain visual informa‐ tion in the same dimensional space as the corresponding textual information. There is also a fully connected linear layer in between them to make sure that the learnable embeddings have the same shape as the LLM expects.
 11. We looks at how the BLIP model preprocesses text and image and then look at two usecases - Image captioning and Multi-modelchat based prompting.
+
+### Ch-10: Creating Text Embedding Models
+1. In this chapter, the book discusses a variety of ways to create and fine-tune an embedding model to increase its representative and semantic power.
+2. An embedding model can be trained for a variety of purposes, for e.g.- for training a sentiment classifier, we can fine-tune the model such that documents are closer in n-dimensional space based on their sentiment rather than their semantic nature.
+3. Contrastive Learning - Contrastive learning is a technique that aims to train an embedding model such that similar documents are closer in vector space while dissimilar documents are further apart.
+4. 
