@@ -202,4 +202,10 @@ These three objectives are jointly optimized to improve the visual representatio
 1. In this chapter, the book discusses a variety of ways to create and fine-tune an embedding model to increase its representative and semantic power.
 2. An embedding model can be trained for a variety of purposes, for e.g.- for training a sentiment classifier, we can fine-tune the model such that documents are closer in n-dimensional space based on their sentiment rather than their semantic nature.
 3. Contrastive Learning - Contrastive learning is a technique that aims to train an embedding model such that similar documents are closer in vector space while dissimilar documents are further apart.
-4. 
+4. Before sentence-transformers, sentence embeddings often used an archi‐ tectural structure called cross-encoders with BERT. A cross-encoder allows two sentences to be passed to the Transformer network simultaneously to predict the extent to which the two sentences are similar.
+5. sentence-transformers are trained using bi-encoders, bi-encoder or SBERT for sentence- BERT. Although a bi-encoder is quite fast and creates accurate sentence representa‐ tions, cross-encoders generally achieve better performance than a bi-encoder but do not generate embeddings.
+6. Steps to train bi-encoders
+   * In sentence-transformers the classification head is dropped, and instead mean pooling is used on the final output layer to generate an embedding. This pooling layer averages the word embeddings and gives back a fixed dimensional output vector.
+   * The training for sentence-transformers uses a Siamese architecture. In this architecture, we have two identical BERT models that share the same weights and neural architecture. These models are fed the sentences from which embeddings are generated through the pooling of token embeddings. Then, models are optimized through the similarity of the sentence embeddings.
+   * During training, the embeddings for each sentence are concatenated together with the difference between the embeddings. Then, this resulting embedding is optimized through a softmax classifier.
+7. 
