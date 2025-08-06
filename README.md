@@ -208,4 +208,12 @@ These three objectives are jointly optimized to improve the visual representatio
    * In sentence-transformers the classification head is dropped, and instead mean pooling is used on the final output layer to generate an embedding. This pooling layer averages the word embeddings and gives back a fixed dimensional output vector.
    * The training for sentence-transformers uses a Siamese architecture. In this architecture, we have two identical BERT models that share the same weights and neural architecture. These models are fed the sentences from which embeddings are generated through the pooling of token embeddings. Then, models are optimized through the similarity of the sentence embeddings.
    * During training, the embeddings for each sentence are concatenated together with the difference between the embeddings. Then, this resulting embedding is optimized through a softmax classifier.
-7. 
+7. There are a large number of loss functions and softmax loss is generally not advised as there are more performant losses
+8. there are two loss functions that are typically used and seem to perform generally well, namely:
+   • Cosine similarity
+   • Multiple negatives ranking (MNR) loss
+9. Cosine Similarity loss aims to minimize the cosine distance between seman‐ tically similar sentences and to maximize the distance between semantically dissimilar sentences.
+10. Cosine similarity loss is straightforward—it calculates the cosine similarity between the two embeddings of the two texts and compares that to the labeled similarity score.
+11. MNR Loss - that uses either positive pairs of sentences or triplets that contain a pair of positive sentences and an additional unrelated sentence. This unrelated sentence is called a negative and represents the dissimilarity between the positive sentences.
+12. Multiple negatives ranking loss aims to minimize the distance between related pairs of text, such as questions and answers, and maximize the distance between unrelated pairs, such as questions and unrelated answers.
+13. 
