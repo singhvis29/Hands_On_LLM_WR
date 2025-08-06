@@ -200,6 +200,7 @@ These three objectives are jointly optimized to improve the visual representatio
 
 ### Ch-10: Creating Text Embedding Models
 1. In this chapter, the book discusses a variety of ways to create and fine-tune an embedding model to increase its representative and semantic power.
+#### Training an embedding model
 2. An embedding model can be trained for a variety of purposes, for e.g.- for training a sentiment classifier, we can fine-tune the model such that documents are closer in n-dimensional space based on their sentiment rather than their semantic nature.
 3. Contrastive Learning - Contrastive learning is a technique that aims to train an embedding model such that similar documents are closer in vector space while dissimilar documents are further apart.
 4. Before sentence-transformers, sentence embeddings often used an archi‐ tectural structure called cross-encoders with BERT. A cross-encoder allows two sentences to be passed to the Transformer network simultaneously to predict the extent to which the two sentences are similar.
@@ -216,4 +217,10 @@ These three objectives are jointly optimized to improve the visual representatio
 10. Cosine similarity loss is straightforward—it calculates the cosine similarity between the two embeddings of the two texts and compares that to the labeled similarity score.
 11. MNR Loss - that uses either positive pairs of sentences or triplets that contain a pair of positive sentences and an additional unrelated sentence. This unrelated sentence is called a negative and represents the dissimilarity between the positive sentences.
 12. Multiple negatives ranking loss aims to minimize the distance between related pairs of text, such as questions and answers, and maximize the distance between unrelated pairs, such as questions and unrelated answers.
-13. 
+13. After having generated these positive and negative pairs, we calculate their embed‐ dings and apply cosine similarity. These similarity scores are then used to answer the question, are these pairs negative or positive? In other words, it is treated as a classification task and we can use cross-entropy loss to optimize the model.
+14. We can make the training process better by making it harder for the model to find the correct answer. While constructing the set of negatives, they can be easy/medium/hard. A set of hard negatives are highly related to the question but are not the right answer. Training with hard negatives enables the model to learn more nuances about the text.
+#### Fine-Tuning Embedding Model
+15. We can choose an embedding model that was already trained on a large amount of data and fine-tune it for our specific data or purpose.
+16. Supervised
+   * most straightforward way to fine-tune an embedding model is to repeat the process of training our model as we did before but replace the 'bert-base-uncased' with a pretrained sentence-transformers model.
+   * 
