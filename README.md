@@ -223,4 +223,4 @@ These three objectives are jointly optimized to improve the visual representatio
 15. We can choose an embedding model that was already trained on a large amount of data and fine-tune it for our specific data or purpose.
 16. Supervised
    * most straightforward way to fine-tune an embedding model is to repeat the process of training our model as we did before but replace the 'bert-base-uncased' with a pretrained sentence-transformers model.
-   * 
+   * augmented SBERT - This method allows us to increase the size of datasets that you already have available without the need to manually label hundreds of thousands of sentence pairs. we aim to augment the small amount of labeled data such that they can be used for regular training. It makes use of the slow and more accurate cross-encoder architecture (BERT) to augment and label a larger set of input pairs. These newly labeled pairs are then used for fine-tuning a bi-encoder (SBERT).
