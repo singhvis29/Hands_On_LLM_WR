@@ -203,8 +203,8 @@ These three objectives are jointly optimized to improve the visual representatio
 #### Training an embedding model
 2. An embedding model can be trained for a variety of purposes, for e.g.- for training a sentiment classifier, we can fine-tune the model such that documents are closer in n-dimensional space based on their sentiment rather than their semantic nature.
 3. Contrastive Learning - Contrastive learning is a technique that aims to train an embedding model such that similar documents are closer in vector space while dissimilar documents are further apart.
-4. Before sentence-transformers, sentence embeddings often used an archi‐ tectural structure called cross-encoders with BERT. A cross-encoder allows two sentences to be passed to the Transformer network simultaneously to predict the extent to which the two sentences are similar.
-5. sentence-transformers are trained using bi-encoders, bi-encoder or SBERT for sentence- BERT. Although a bi-encoder is quite fast and creates accurate sentence representa‐ tions, cross-encoders generally achieve better performance than a bi-encoder but do not generate embeddings.
+4. Before sentence-transformers, sentence embeddings often used an architectural structure called cross-encoders with BERT. A cross-encoder allows two sentences to be passed to the Transformer network simultaneously to predict the extent to which the two sentences are similar.
+5. sentence-transformers are trained using bi-encoders, bi-encoder or SBERT for sentence-BERT. Although a bi-encoder is quite fast and creates accurate sentence representations, cross-encoders generally achieve better performance than a bi-encoder but do not generate embeddings.
 6. Steps to train bi-encoders
    * In sentence-transformers the classification head is dropped, and instead mean pooling is used on the final output layer to generate an embedding. This pooling layer averages the word embeddings and gives back a fixed dimensional output vector.
    * The training for sentence-transformers uses a Siamese architecture. In this architecture, we have two identical BERT models that share the same weights and neural architecture. These models are fed the sentences from which embeddings are generated through the pooling of token embeddings. Then, models are optimized through the similarity of the sentence embeddings.
@@ -213,11 +213,11 @@ These three objectives are jointly optimized to improve the visual representatio
 8. there are two loss functions that are typically used and seem to perform generally well, namely:
    • Cosine similarity
    • Multiple negatives ranking (MNR) loss
-9. Cosine Similarity loss aims to minimize the cosine distance between seman‐ tically similar sentences and to maximize the distance between semantically dissimilar sentences.
-10. Cosine similarity loss is straightforward—it calculates the cosine similarity between the two embeddings of the two texts and compares that to the labeled similarity score.
+9. Cosine Similarity loss aims to minimize the cosine distance between semantically similar sentences and to maximize the distance between semantically dissimilar sentences.
+10. Cosine similarity loss is straightforward, it calculates the cosine similarity between the two embeddings of the two texts and compares that to the labeled similarity score.
 11. MNR Loss - that uses either positive pairs of sentences or triplets that contain a pair of positive sentences and an additional unrelated sentence. This unrelated sentence is called a negative and represents the dissimilarity between the positive sentences.
 12. Multiple negatives ranking loss aims to minimize the distance between related pairs of text, such as questions and answers, and maximize the distance between unrelated pairs, such as questions and unrelated answers.
-13. After having generated these positive and negative pairs, we calculate their embed‐ dings and apply cosine similarity. These similarity scores are then used to answer the question, are these pairs negative or positive? In other words, it is treated as a classification task and we can use cross-entropy loss to optimize the model.
+13. After having generated these positive and negative pairs, we calculate their embeddings and apply cosine similarity. These similarity scores are then used to answer the question, are these pairs negative or positive? In other words, it is treated as a classification task and we can use cross-entropy loss to optimize the model.
 14. We can make the training process better by making it harder for the model to find the correct answer. While constructing the set of negatives, they can be easy/medium/hard. A set of hard negatives are highly related to the question but are not the right answer. Training with hard negatives enables the model to learn more nuances about the text.
 #### Fine-Tuning Embedding Model
 15. We can choose an embedding model that was already trained on a large amount of data and fine-tune it for our specific data or purpose.
