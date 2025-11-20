@@ -230,4 +230,10 @@ These three objectives are jointly optimized to improve the visual representatio
 18. Domain Adaptation - In this goal is to update existing embedding models to a specific textual domain that contains different subjects from the source domain. One method for domain adaptation is called adaptive pretraining. You start by pre‐ training your domain-specific corpus using an unsupervised technique, such as the previously discussed TSDAE or masked language modeling. Then, you fine-tune that model using a training dataset that can be either outside or in your target domain.
 
 ### Ch-11: Fine-Tuning Representation Models for Classification
-1. 
+1. In this chapter, we explored fine-tuning the models for classification tasks, few-shot classification, and classification at token level (NER).
+2. Supervised Classification
+  * Classification model consists of a representation model and a classification head, in this chapter we learn to fine-tune both the representation model and the classification head as a single architecture.
+  * We get and f1-score of 0.85 when we fine-tune all the layers i.e., 12 encoder layers of BERT and 1 classification head.
+  * To demonstate importance of training the entire network, we fine-tune the model again by freezing all BERT layers, this gives us an f1-score of 0.63. Generally the more layers we fine-tune, the better the model would perform.
+3. Few-shot classification
+  * 
