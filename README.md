@@ -236,4 +236,9 @@ These three objectives are jointly optimized to improve the visual representatio
   * We get and f1-score of 0.85 when we fine-tune all the layers i.e., 12 encoder layers of BERT and 1 classification head.
   * To demonstate importance of training the entire network, we fine-tune the model again by freezing all BERT layers, this gives us an f1-score of 0.63. Generally the more layers we fine-tune, the better the model would perform.
 3. Few-shot classification
-  * 
+  * To perform few-shot text classification, we use an efficient framework called SetFit. It is built on top of the architecture of sentence transformers to generate high-quality textual representations that are updated during training. Only a few labeled examples are needed for this framework to be competitive with fine-tuning a BERT-like model on a large, labeled dataset.
+  * Underlying algorithm of SetFit consists of
+    i. Sampling training data - SetFit treats sentences of same class as in-class and different classes as out-class. We can obtain positive pairs by taking pairs from same class and negative pairs by taking from different classes
+    ii. Fine-tuning embeddings - We can use the generated sentence pairs to fine-tune the embedding model. This leverages a method called contrastive learning to fine-tune a pretrained BERT model. 
+    iii. Training a classifier - We generate embeddings for all sentences and use those as the input of a classifier. We can use the fine-tuned Sentence Transformers model to convert our sentences into embeddings that we can use as features. The classifier learns from our fine-tuned embeddings to accurately predict unseen sentences. 
+  * We leveraged a pretrained model and fine-tuned it to perform classification. This process describes a two-step process: first pretraining a model (which was already done for us) and then fine-tuning it for a particular task. We can squeeze another step between them, namely continue pretraining an already pretrained BERT model. In other words, we can simply continue training the BERT model using masked language modeling (MLM) but instead use data from our domain. 
