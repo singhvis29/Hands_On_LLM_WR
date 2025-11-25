@@ -245,6 +245,8 @@ These three objectives are jointly optimized to improve the visual representatio
   * Tip - Generally, predicting whole words tends to be more complicated than tokens, which makes the model perform better as it needs to learn more accurate and precise representations during training. However, it tends to take a bit more time to converge.
   * To evaluate its performance we would normally fine-tune the model on a variety of tasks.
 4. Named-Entity Recognitions
-   * Instead of classifying entire documents, this procedure allows for the classification of individual tokens and/or words, including people and locations.
-   * There is a fundamental shift in the classification approach. Rather than relying on the aggregation or pooling of token embeddings, the model now makes predictions for individual tokens in a sequence. It is crucial to emphasize that our word-level classification task does not entail classifying entire words, but rather the tokens that collectively constitute those words.
-   * 
+  * Instead of classifying entire documents, this procedure allows for the classification of individual tokens and/or words, including people and locations.
+  * There is a fundamental shift in the classification approach. Rather than relying on the aggregation or pooling of token embeddings, the model now makes predictions for individual tokens in a sequence. It is crucial to emphasize that our word-level classification task does not entail classifying entire words, but rather the tokens that collectively constitute those words.
+  * If two tokens that follow each other are part of the same phrase, then the start of that phrase is indicated with B, which is followed by an I to show that they belong to each other and are not independent entities.
+  * We make use of the evaluate package by Hugging Face to create a compute_metrics function that allows us to evaluate performance on a token level
+  * We use a collator that works with classification on a token level, namely DataCollatorForTokenClassification
