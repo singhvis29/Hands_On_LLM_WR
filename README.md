@@ -250,3 +250,14 @@ These three objectives are jointly optimized to improve the visual representatio
   * If two tokens that follow each other are part of the same phrase, then the start of that phrase is indicated with B, which is followed by an I to show that they belong to each other and are not independent entities.
   * We make use of the evaluate package by Hugging Face to create a compute_metrics function that allows us to evaluate performance on a token level
   * We use a collator that works with classification on a token level, namely DataCollatorForTokenClassification
+
+### Ch-12: Fine-Tuning Generational Models
+1. In this chapter, we explore the two most common methods for fine-tuning text generation models, supervised fine-tuning and preference tuning.
+2. There are 3 main steps which lead to creating a high-quality LLM
+   a. Language Modeling - Pretrain on one or more massive text datasets to produce a base model (pretrained or foundational model)
+   b. Supervised Fine-tuning - With supervised fine-tuning (SFT), we can adapt the base model to follow instructions. During this fine-tuning process, the parameters of the base model are updated to be more in line with our target task.
+   c. Preference tuning - Preference tuning is a form of fine-tuning and, as the name implies, aligns the output of the model to our preferences, which are defined by the data that we give it.
+3. Supervised Fine-tuning (SFT)
+   a. Full Fine-tuning - The main difference between language model pretraining and full fine-tuning is that in this now use a smaller but labeled dataset whereas the pretraining process was done on a large dataset without any labels.
+   b. Parameter-Efficient Fine-Tuning (PFET) - Instead of updating all parameters of an LLM we focus on updating limited parameter to fine-tune the model. Adapters are a core component of many PEFT-based techniques. The method proposes a set of additional modular components inside the Transformer that can be fine-tuned to improve the model’s performance on a specific task without having to fine-tune all the model weights.
+   
