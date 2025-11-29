@@ -254,10 +254,17 @@ These three objectives are jointly optimized to improve the visual representatio
 ### Ch-12: Fine-Tuning Generational Models
 1. In this chapter, we explore the two most common methods for fine-tuning text generation models, supervised fine-tuning and preference tuning.
 2. There are 3 main steps which lead to creating a high-quality LLM
-   a. Language Modeling - Pretrain on one or more massive text datasets to produce a base model (pretrained or foundational model)
-   b. Supervised Fine-tuning - With supervised fine-tuning (SFT), we can adapt the base model to follow instructions. During this fine-tuning process, the parameters of the base model are updated to be more in line with our target task.
-   c. Preference tuning - Preference tuning is a form of fine-tuning and, as the name implies, aligns the output of the model to our preferences, which are defined by the data that we give it.
+   * Language Modeling - Pretrain on one or more massive text datasets to produce a base model (pretrained or foundational model)
+   * Supervised Fine-tuning - With supervised fine-tuning (SFT), we can adapt the base model to follow instructions. During this fine-tuning process, the parameters of the base model are updated to be more in line with our target task.
+   * Preference tuning - Preference tuning is a form of fine-tuning and, as the name implies, aligns the output of the model to our preferences, which are defined by the data that we give it.
 3. Supervised Fine-tuning (SFT)
-   a. Full Fine-tuning - The main difference between language model pretraining and full fine-tuning is that in this now use a smaller but labeled dataset whereas the pretraining process was done on a large dataset without any labels.
-   b. Parameter-Efficient Fine-Tuning (PFET) - Instead of updating all parameters of an LLM we focus on updating limited parameter to fine-tune the model. Adapters are a core component of many PEFT-based techniques. The method proposes a set of additional modular components inside the Transformer that can be fine-tuned to improve the model’s performance on a specific task without having to fine-tune all the model weights.
+   * Full Fine-tuning - The main difference between language model pretraining and full fine-tuning is that in this now use a smaller but labeled dataset whereas the pretraining process was done on a large dataset without any labels.
+   * Parameter-Efficient Fine-Tuning (PFET) - Instead of updating all parameters of an LLM we focus on updating limited parameter to fine-tune the model. Adapters are a core component of many PEFT-based techniques. The method proposes a set of additional modular components inside the Transformer that can be fine-tuned to improve the model’s performance on a specific task without having to fine-tune all the model weights.
+   * Low-Rank Adaptation (LoRA) - LoRA is a widely used and effective technique for PFET, it creates a small subset of the base model to fine-tune instead of adding layers to the model. E.g. a 10x10 matrix can be replaced by 2 10x1 matrix for updating parameters
+   * We can make LoRA even more efficient by reducing the memory requirements of the model’s original weights before projecting them into smaller matrices. The weights of an LLM are numeric values with a given precision, which can be expressed by the number of bits like float64 or float32. This process is called **quantization**. With quantization, we aim to lower the number of bits while still accurately representing the original weight values. 
+   * Disadvantage of quantization is that when directly mapping higher precision values to lower precision values, multiple higher precision values might end up being represented by the same lower precision values.
+   * We use a technique called QLoRA to overcome this, the authors of QLoRA technique used blockwise quantization to map certain blocks of higher precision values to lower precision values. Instead of directly mapping higher precision to lower precision values, additional blocks are created that allow for quantizing similar weights.
+   * A nice property of neural networks is that their values are generally normally dis‐ tributed between –1 and 1. This property allows us to bin the original weights to lower bits based on their relative density.
+   * We fine-tune a completely open source and smaller version of Llama, TinyLlama, to follow instructions using the QLoRA procedure.
+
    
