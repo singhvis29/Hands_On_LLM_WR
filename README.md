@@ -266,5 +266,13 @@ These three objectives are jointly optimized to improve the visual representatio
    * We use a technique called QLoRA to overcome this, the authors of QLoRA technique used blockwise quantization to map certain blocks of higher precision values to lower precision values. Instead of directly mapping higher precision to lower precision values, additional blocks are created that allow for quantizing similar weights.
    * A nice property of neural networks is that their values are generally normally dis‐ tributed between –1 and 1. This property allows us to bin the original weights to lower bits based on their relative density.
    * We fine-tune a completely open source and smaller version of Llama, TinyLlama, to follow instructions using the QLoRA procedure.
+   * Model Quantization -
+      * We use the bitsandbytes package to compress the pretrained model to a 4-bit representation. The books follows the configuration recommended in the paper.
+      * Loading the model now only uses ~1 GB VRAM compared to the ~4 GB of VRAM it would need without quantization.
+   * LoRA Configuration -
+      * LoRA configuration using the peft library
+      * some parameters used which are worth mentioning, r - rank of the compressed matrices, lora_alpha - Controls the amount of change that is added to the original weights, target_modules - Controls which layers to target.
+   * We could also use QLoRA to fine-tune an instruction model. QLoRA is a great technique for nudging an existing chat model to be more appropriate for your use case.
+   * After we have trained our QLoRA weights, we still need to combine them with the original weights to use them. We reload the model in 16 bits, instead of the quantized 4 bits, to merge the weights. 
 
    
