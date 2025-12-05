@@ -273,6 +273,14 @@ These three objectives are jointly optimized to improve the visual representatio
       * LoRA configuration using the peft library
       * some parameters used which are worth mentioning, r - rank of the compressed matrices, lora_alpha - Controls the amount of change that is added to the original weights, target_modules - Controls which layers to target.
    * We could also use QLoRA to fine-tune an instruction model. QLoRA is a great technique for nudging an existing chat model to be more appropriate for your use case.
-   * After we have trained our QLoRA weights, we still need to combine them with the original weights to use them. We reload the model in 16 bits, instead of the quantized 4 bits, to merge the weights. 
+   * After we have trained our QLoRA weights, we still need to combine them with the original weights to use them. We reload the model in 16 bits, instead of the quantized 4 bits, to merge the weights.
+   * Word-Level Metrics: Common word-level metrics include perplexity, ROUGE, BLEU, and BERTScore. With perplexity, we assume a model performs better if it gives the next token a high probability. They do not account for consistency, fluency, creativity, or even correctness of the generated text.
+   * A common method for evaluating generative models on language generation and understanding tasks is on well-known and public benchmarks, such as MMLU, GLUE, TruthfulQA, GSM8k, and HellaSwag.
+   * Preference-Tuning / Alignment / RLHF
+      * The idea is to use a performance evaluator model which will evaluate LLM response, this is the preference tuning step where we update the model based on that score:
+        * If the score is high, the model is updated to encourage it to generate more like this type of generation.
+        * If the score is low, the model is updated to discourage such generations.
+     * Automating Preference Evaluation Using Reward Models - we need a step before the preference-tuning step, namely to train a reward model. The LLM becomes a reward model by replacing its language modeling head with a quality classification head.
+   * 
 
    
