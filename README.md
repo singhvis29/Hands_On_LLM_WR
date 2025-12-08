@@ -1,4 +1,4 @@
-<img width="504" height="662" alt="image" src="https://github.com/user-attachments/assets/00f95ca3-6bfe-463f-ac71-a56951d42020" /># Hands_On_LLM_WR
+# Hands_On_LLM_WR
 This repository is create to test code and concepts present in the book Hand On LLM by Jay Alammar, Maarten Grootendorst
 
 ### Ch-1: An Introduction to Large Language Models
