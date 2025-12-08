@@ -1,4 +1,4 @@
-# Hands_On_LLM_WR
+<img width="504" height="662" alt="image" src="https://github.com/user-attachments/assets/00f95ca3-6bfe-463f-ac71-a56951d42020" /># Hands_On_LLM_WR
 This repository is create to test code and concepts present in the book Hand On LLM by Jay Alammar, Maarten Grootendorst
 
 ### Ch-1: An Introduction to Large Language Models
@@ -274,13 +274,19 @@ These three objectives are jointly optimized to improve the visual representatio
       * some parameters used which are worth mentioning, r - rank of the compressed matrices, lora_alpha - Controls the amount of change that is added to the original weights, target_modules - Controls which layers to target.
    * We could also use QLoRA to fine-tune an instruction model. QLoRA is a great technique for nudging an existing chat model to be more appropriate for your use case.
    * After we have trained our QLoRA weights, we still need to combine them with the original weights to use them. We reload the model in 16 bits, instead of the quantized 4 bits, to merge the weights.
+4. Evaluating Generation Models
    * Word-Level Metrics: Common word-level metrics include perplexity, ROUGE, BLEU, and BERTScore. With perplexity, we assume a model performs better if it gives the next token a high probability. They do not account for consistency, fluency, creativity, or even correctness of the generated text.
    * A common method for evaluating generative models on language generation and understanding tasks is on well-known and public benchmarks, such as MMLU, GLUE, TruthfulQA, GSM8k, and HellaSwag.
-   * Preference-Tuning / Alignment / RLHF
-      * The idea is to use a performance evaluator model which will evaluate LLM response, this is the preference tuning step where we update the model based on that score:
-        * If the score is high, the model is updated to encourage it to generate more like this type of generation.
-        * If the score is low, the model is updated to discourage such generations.
-     * Automating Preference Evaluation Using Reward Models - we need a step before the preference-tuning step, namely to train a reward model. The LLM becomes a reward model by replacing its language modeling head with a quality classification head.
-   * 
+5. Preference-Tuning / Alignment / RLHF
+   * The idea is to use a performance evaluator model which will evaluate LLM response, this is the preference tuning step where we update the model based on that score:
+     * If the score is high, the model is updated to encourage it to generate more like this type of generation.
+     * If the score is low, the model is updated to discourage such generations.
+  * Automating Preference Evaluation Using Reward Models - we need a step before the preference-tuning step, namely to train a reward model. The LLM becomes a reward model by replacing its language modeling head with a quality classification head.
+   * Steps for preference tuning -
+      * Collect preference data
+      * Train reward model
+      * Use the reward model to fine-tune the LLM
+   * PPO is a popular reinforcement technique that optimizes the instruction-tuned LLM by making sure that the LLM does not deviate too much from the expected rewards. Disadvantage of PPO is that it is a complex method that needs to train at least two models, the reward model and the LLM, which can be more costly than perhaps necessary.
+   * Direct Preference Optimization (DPO) is an alternative to PPO and does away with the reinforcement-based learning procedure. We use a copy of the LLM as the reference model to judge the shift between the reference and trainable model in the quality of the accepted generation and rejected generation.
 
    
