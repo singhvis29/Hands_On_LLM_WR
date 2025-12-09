@@ -288,5 +288,9 @@ These three objectives are jointly optimized to improve the visual representatio
       * Use the reward model to fine-tune the LLM
    * PPO is a popular reinforcement technique that optimizes the instruction-tuned LLM by making sure that the LLM does not deviate too much from the expected rewards. Disadvantage of PPO is that it is a complex method that needs to train at least two models, the reward model and the LLM, which can be more costly than perhaps necessary.
    * Direct Preference Optimization (DPO) is an alternative to PPO and does away with the reinforcement-based learning procedure. We use a copy of the LLM as the reference model to judge the shift between the reference and trainable model in the quality of the accepted generation and rejected generation.
+   * For preference tuning with DPO - preference tuning is eerily similar to the instruction tuning we covered before with some slight differences.
+   * This combination of SFT+DPO is a great way to first fine-tune your model to perform basic chatting and then align its answers with human preference.
+   * new methods of aligning preferences have been developed. Of note is Odds Ratio Preference Optimization (ORPO), a process that combines SFT and DPO into a single training process. It removes the need to perform two separate training loops, further simplifying the training process while allowing for the use of QLoRA.
+     
 
    
